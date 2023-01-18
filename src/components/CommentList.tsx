@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Comment = styled.div`
   padding: 7px 10px;
   text-align: left;
-
   & > img {
     vertical-align: middle;
     margin-right: 10px;
@@ -47,24 +46,28 @@ const data = [
 ];
 
 function CommentList() {
-  return data.map((comment, key) => (
-    <Comment key={key}>
-      <img src={comment.profile_url} alt="" />
+  return (
+    <>
+      {data.map((comment) => (
+        <Comment key={comment.id}>
+          <img src={comment.profile_url} alt="" />
 
-      {comment.author}
+          {comment.author}
 
-      <CreatedAt>{comment.createdAt}</CreatedAt>
+          <CreatedAt>{comment.createdAt}</CreatedAt>
 
-      <Content>{comment.content}</Content>
+          <Content>{comment.content}</Content>
 
-      <Button>
-        <a>수정</a>
-        <a>삭제</a>
-      </Button>
+          <Button>
+            <span>수정</span>
+            <span>삭제</span>
+          </Button>
 
-      <hr />
-    </Comment>
-  ));
+          <hr />
+        </Comment>
+      ))}
+    </>
+  );
 }
 
 export default CommentList;
