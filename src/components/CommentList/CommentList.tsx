@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { getCommentsAPI } from "../../api";
+import { CommentState } from "../../states/CommentState";
+import { IComment } from "../../types";
 import * as S from "./index";
 
-// 임시 데이터 입니다. 코드 작성시 data 부분을 지워주세요
-const data = [
-  {
-    id: 1,
-    profile_url: "https://picsum.photos/id/1/50/50",
-    author: "abc_1",
-    content: "UI 테스트는 어떻게 진행하나요",
-    createdAt: "2020-05-01",
-  },
-];
-
 function CommentList() {
+  const [commentList, setCommentList] = useRecoilState(CommentState);
+
+  useEffect(() => {
+    getCommentsAPI().then((res) => {
+      if (res) setCommentList(res);
+    });
+  }, [setCommentList]);
+
   return (
     <>
-      {data.map((comment) => (
+      {commentList.map((comment: IComment) => (
         <S.Comment key={comment.id}>
           <img src={comment.profile_url} alt="" />
 
