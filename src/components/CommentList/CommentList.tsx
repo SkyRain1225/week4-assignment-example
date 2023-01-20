@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { getCommentsAPI } from "../../api";
+import { getCommentsAPI, deleteCommentAPI } from "../../api";
 import { CommentState } from "../../states/CommentState";
 import { IComment } from "../../types";
 import * as S from "./index";
@@ -13,6 +13,22 @@ function CommentList() {
       if (res) setCommentList(res);
     });
   }, [setCommentList]);
+
+  const handleEdit = (id: number) => () => {
+    console.log("수정", id);
+  };
+
+  const handleDelete = (id: number) => () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      deleteCommentAPI(id).then((res) => {
+        if (res) {
+          setCommentList(
+            commentList.filter((comment: IComment) => comment.id !== id),
+          );
+        }
+      });
+    }
+  };
 
   return (
     <>
@@ -27,8 +43,12 @@ function CommentList() {
           <S.Content>{comment.content}</S.Content>
 
           <S.Button>
-            <span>수정</span>
-            <span>삭제</span>
+            <button type="button" onClick={handleEdit(comment.id)}>
+              수정
+            </button>
+            <button type="button" onClick={handleDelete(comment.id)}>
+              삭제
+            </button>
           </S.Button>
 
           <hr />

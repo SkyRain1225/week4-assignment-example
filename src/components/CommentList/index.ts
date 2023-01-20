@@ -24,7 +24,7 @@ export const Content = styled.div`
 export const Button = styled.div`
   text-align: right;
   margin: 10px 0;
-  & > a {
+  & > button {
     margin-right: 10px;
     padding: 0.375rem 0.75rem;
     border-radius: 0.25rem;
