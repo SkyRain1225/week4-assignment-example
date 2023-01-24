@@ -1,39 +1,11 @@
 {
   "comments": [
     {
-      "id": 1,
-      "profile_url": "https://picsum.photos/id/1/50/50",
-      "author": "abc_1",
-      "content": "UI 테스트는 어떻게 진행하나요",
-      "createdAt": "2022-03-01"
-    },
-    {
-      "id": 2,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
-      "id": 3,
-      "profile_url": "https://picsum.photos/id/3/50/50",
-      "author": "abc_3",
-      "content": "코드에러가 발생했는데 어딘지 모르겠어요",
-      "createdAt": "2022-03-03"
-    },
-    {
       "id": 4,
       "profile_url": "https://picsum.photos/id/4/50/50",
       "author": "abc_4",
       "content": "Javascript 기초가 부족한데 좋은 가이드 있나요",
       "createdAt": "2022-03-04"
-    },
-    {
-      "id": 5,
-      "profile_url": "https://picsum.photos/id/5/50/50",
-      "author": "abc_5",
-      "content": "Typescript는 어떤점에서 좋나요",
-      "createdAt": "2022-03-05"
     },
     {
       "id": 6,
