@@ -18,4 +18,25 @@ export const Page = styled.button<{ active: boolean }>`
         color: #fff;
   `}
   margin-right: 3px;
+
+  > .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.pagination li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e2e2e2;
+  }
 `;

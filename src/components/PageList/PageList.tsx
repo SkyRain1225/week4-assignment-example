@@ -1,17 +1,33 @@
 import React from "react";
+import Pagination from "react-js-pagination";
 import * as S from "./index";
 
-function PageList() {
-  const pageArray = [];
-
-  pageArray.push(
-    // 임시로 페이지 하나만 설정했습니다.
-    <S.Page key="1" active>
-      1
-    </S.Page>,
+function PageList({
+  page,
+  totalCount,
+  pagePostCount,
+  handlePageChange,
+}: {
+  page: number;
+  totalCount: number;
+  pagePostCount: number;
+  handlePageChange: (pageNumber: number) => void;
+}) {
+  return (
+    <S.PageListStyle>
+      <S.Page active>
+        <Pagination
+          activePage={page}
+          itemsCountPerPage={pagePostCount}
+          totalItemsCount={totalCount}
+          pageRangeDisplayed={5}
+          prevPageText="<"
+          nextPageText=">"
+          onChange={handlePageChange}
+        />
+      </S.Page>
+    </S.PageListStyle>
   );
-
-  return <S.PageListStyle>{pageArray}</S.PageListStyle>;
 }
 
 export default PageList;

@@ -14,7 +14,7 @@ function Form() {
   const onSubmit: SubmitHandler<IComment> = (data) => {
     postCommentAPI(data).then((res) => {
       if (res) {
-        setCommentList([...commentList, res]);
+        setCommentList([res, ...commentList]);
         reset();
       }
     });

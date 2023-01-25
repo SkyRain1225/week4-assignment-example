@@ -125,6 +125,13 @@
       "author": "abc_22",
       "content": "주변에 React 개발자 있나요",
       "createdAt": "2022-03-22"
+    },
+    {
+      "profile_url": "https://picsum.photos/id/6/50/50",
+      "author": "오경준",
+      "content": "하이요",
+      "createdAt": "2023-01-24",
+      "id": 23
     }
   ]
 }

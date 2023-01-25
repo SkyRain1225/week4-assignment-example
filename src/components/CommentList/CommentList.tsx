@@ -10,7 +10,7 @@ function CommentList() {
 
   useEffect(() => {
     getCommentsAPI().then((res) => {
-      if (res) setCommentList(res);
+      if (res) setCommentList(res.reverse());
     });
   }, [setCommentList]);
 
