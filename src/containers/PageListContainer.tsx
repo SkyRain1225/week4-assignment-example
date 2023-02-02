@@ -1,5 +1,4 @@
-import React from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { PageList } from "../components";
 import { CommentState } from "../states/CommentState";
 import { PageState } from "../states/PageState";

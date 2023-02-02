@@ -29,6 +29,7 @@
     "@typescript-eslint/no-floating-promises": "off",
     "consistent-return": "off",
     "@typescript-=eslint/no-unsafe-assignment": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { getCommentsAPI, deleteCommentAPI } from "../../api";
+import { deleteCommentAPI, getCommentsAPI } from "../../api";
 import { CommentState } from "../../states/CommentState";
 import { PageState } from "../../states/PageState";
 import { IComment } from "../../types";

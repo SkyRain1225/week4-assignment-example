@@ -1,8 +1,7 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { CommentState } from "../../states/CommentState";
 import { postCommentAPI } from "../../api";
+import { CommentState } from "../../states/CommentState";
 import { IComment } from "../../types";
 import * as S from "./Form.styled";
 
