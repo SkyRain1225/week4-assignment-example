@@ -1,8 +1,6 @@
 ## 목표
 
-- API 서버와 통신해서 작동하는 댓글 프로젝트를 Redux 통해 구현
-
-- 기존 Redux와 JavaScript로 구현하는 Pagination을 Recoil, react-js-pagination 라이브러리를 활용하여 재학습 용도로 만듬
+- 기존 Redux와 JavaScript로 구현하는 Pagination을 라이브러리를 활용하여 재학습 용도로 만듬
 
 ## 참고자료
 
