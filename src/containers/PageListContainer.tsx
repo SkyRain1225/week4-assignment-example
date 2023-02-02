@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
+import React from "react";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { PageList } from "../components";
 import { CommentState } from "../states/CommentState";
+import { PageState } from "../states/PageState";
 
 function PageListContainer() {
   const commentList = useRecoilValue(CommentState);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useRecoilState(PageState);
 
   const handlePageChange = (pageNumber: number) => {
     setPage(pageNumber);

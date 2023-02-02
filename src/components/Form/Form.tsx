@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import { CommentState } from "../../states/CommentState";
 import { postCommentAPI } from "../../api";
 import { IComment } from "../../types";
-import * as S from "./index";
+import * as S from "./Form.styled";
 
 function Form() {
   const [commentList, setCommentList] = useRecoilState(CommentState);

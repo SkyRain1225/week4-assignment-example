@@ -1,18 +1,33 @@
-import React, { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import React, { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { getCommentsAPI, deleteCommentAPI } from "../../api";
 import { CommentState } from "../../states/CommentState";
+import { PageState } from "../../states/PageState";
 import { IComment } from "../../types";
-import * as S from "./index";
+import * as S from "./CommentList.styled";
 
 function CommentList() {
   const [commentList, setCommentList] = useRecoilState(CommentState);
+  const page = useRecoilValue(PageState);
+  const [sliceCommentList, setSliceCommentList] = useState<
+    IComment[] | undefined
+  >(undefined);
 
   useEffect(() => {
-    getCommentsAPI().then((res) => {
+    const fetchData = async () => {
+      const res = await getCommentsAPI();
       if (res) setCommentList(res.reverse());
-    });
+    };
+    fetchData();
   }, [setCommentList]);
+
+  useEffect(() => {
+    if (commentList) {
+      const start = (page - 1) * 5;
+      const end = page * 5;
+      setSliceCommentList(commentList.slice(start, end));
+    }
+  }, [commentList, page]);
 
   const handleEdit = (id: number) => () => {
     console.log("수정", id);
@@ -30,9 +45,10 @@ function CommentList() {
     }
   };
 
+  if (!sliceCommentList) return <div>Loading...</div>;
   return (
     <>
-      {commentList.map((comment: IComment) => (
+      {sliceCommentList.map((comment: IComment) => (
         <S.Comment key={comment.id}>
           <img src={comment.profile_url} alt="" />
 

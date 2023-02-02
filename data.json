@@ -92,13 +92,6 @@
       "createdAt": "2022-03-17"
     },
     {
-      "id": 18,
-      "profile_url": "https://picsum.photos/id/18/50/50",
-      "author": "abc_18",
-      "content": "local storage는 언제 사용하는게 좋나요.",
-      "createdAt": "2022-03-18"
-    },
-    {
       "id": 19,
       "profile_url": "https://picsum.photos/id/19/50/50",
       "author": "abc_19",

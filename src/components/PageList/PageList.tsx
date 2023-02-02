@@ -1,6 +1,6 @@
 import React from "react";
 import Pagination from "react-js-pagination";
-import * as S from "./index";
+import * as S from "./PageList.styled";
 
 function PageList({
   page,
