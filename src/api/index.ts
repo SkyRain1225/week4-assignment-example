@@ -10,8 +10,12 @@ export const instance = axios.create({
   },
 });
 
-export const getCommentsAPI = async () => {
+export const getCommentsAPI = async (id?: number) => {
   try {
+    if (id) {
+      const { data } = await instance.get<IComment[]>(`/comments/${id}`);
+      return data;
+    }
     const { data } = await instance.get<IComment[]>("/comments");
     return data;
   } catch {

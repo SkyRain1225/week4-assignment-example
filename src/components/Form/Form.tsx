@@ -11,12 +11,14 @@ function Form() {
   const { register, handleSubmit, reset } = useForm<IComment>();
 
   const onSubmit: SubmitHandler<IComment> = (data) => {
-    postCommentAPI(data).then((res) => {
+    const submitFetch = async () => {
+      const res = await postCommentAPI(data);
       if (res) {
         setCommentList([res, ...commentList]);
         reset();
       }
-    });
+    };
+    submitFetch();
   };
 
   return (

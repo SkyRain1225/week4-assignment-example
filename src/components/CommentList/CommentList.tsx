@@ -31,17 +31,22 @@ function CommentList() {
 
   const handleEdit = (id: number) => () => {
     console.log("수정", id);
+    getCommentsAPI(id).then((res) => {
+      console.log(res);
+    });
   };
 
   const handleDelete = (id: number) => () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
-      deleteCommentAPI(id).then((res) => {
+      const deleteFetch = async () => {
+        const res = await deleteCommentAPI(id);
         if (res) {
           setCommentList(
             commentList.filter((comment: IComment) => comment.id !== id),
           );
         }
-      });
+      };
+      deleteFetch();
     }
   };
 
