@@ -104,6 +104,13 @@
       "author": "abc_20",
       "content": "Form 처리는 어떻게 하면 깔끔할까요",
       "createdAt": "2022-03-20"
+    },
+    {
+      "profile_url": "https://picsum.photos/id/15/50/50",
+      "author": "경쥬니",
+      "content": "하이용",
+      "createdAt": "2023-02-05",
+      "id": 21
     }
   ]
 }

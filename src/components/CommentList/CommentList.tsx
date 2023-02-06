@@ -20,7 +20,7 @@ function CommentList() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCommentsAPI();
-      if (Array.isArray(res)) {
+      if (res) {
         setCommentList(res.reverse());
       }
     };
@@ -39,7 +39,7 @@ function CommentList() {
     const editFetch = async () => {
       const res = await getCommentsAPI(id);
 
-      if (res && !Array.isArray(res)) {
+      if (res) {
         setEditMode(true);
         setEditCommentInfo(res);
         setEditNumber(id);

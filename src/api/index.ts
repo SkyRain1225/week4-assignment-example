@@ -10,14 +10,18 @@ export const instance = axios.create({
   },
 });
 
-export const getCommentsAPI = async (id?: number) => {
+export const getCommentsAPI = async <ID extends number | undefined = undefined>(
+  id?: ID,
+): Promise<
+  ID extends number ? IComment | undefined : IComment[] | undefined
+> => {
   try {
     if (id) {
       const { data } = await instance.get<IComment>(`/comments/${id}`);
-      return data;
+      return data as any;
     }
     const { data } = await instance.get<IComment[]>("/comments");
-    return data;
+    return data as any;
   } catch {
     console.log("get failed");
   }
