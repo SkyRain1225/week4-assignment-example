@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IComment } from "../types";
+import { IComment } from "../../types";
 
 const baseURL = "http://localhost:4000";
 
@@ -13,7 +13,7 @@ export const instance = axios.create({
 export const getCommentsAPI = async (id?: number) => {
   try {
     if (id) {
-      const { data } = await instance.get<IComment>(`/comments/${id}`);
+      const { data } = await instance.get<IComment[]>(`/comments/${id}`);
       return data;
     }
     const { data } = await instance.get<IComment[]>("/comments");
@@ -41,10 +41,9 @@ export const deleteCommentAPI = async (id: number) => {
   }
 };
 
-// export const updateCommentAPI = async (comment: IComment) => {
-//   const { data } = await instance.put<IComment>(
-//     `/comments/${comment.id}`,
-//     comment,
-//   );
-//   return data;
-// };
+export const updateCommentAPI = async (id: number, comment: IComment) => {
+  const { data } = await instance.put<IComment>(`/comments/${id}`, {
+    ...comment,
+  });
+  return data;
+};

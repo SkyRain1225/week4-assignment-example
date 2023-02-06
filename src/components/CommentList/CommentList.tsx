@@ -3,11 +3,15 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { deleteCommentAPI, getCommentsAPI } from "../../api";
 import { CommentState } from "../../states/CommentState";
 import { PageState } from "../../states/PageState";
+import { EditState, EditModeState, EditNumber } from "../../states/EditState";
 import { IComment } from "../../types";
 import * as S from "./CommentList.styled";
 
 function CommentList() {
   const [commentList, setCommentList] = useRecoilState(CommentState);
+  const [editCommentInfo, setEditCommentInfo] = useRecoilState(EditState);
+  const [editMode, setEditMode] = useRecoilState(EditModeState);
+  const [editNumber, setEditNumber] = useRecoilState(EditNumber);
   const page = useRecoilValue(PageState);
   const [sliceCommentList, setSliceCommentList] = useState<
     IComment[] | undefined
@@ -16,7 +20,9 @@ function CommentList() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCommentsAPI();
-      if (res) setCommentList(res.reverse());
+      if (Array.isArray(res)) {
+        setCommentList(res.reverse());
+      }
     };
     fetchData();
   }, [setCommentList]);
@@ -30,10 +36,16 @@ function CommentList() {
   }, [commentList, page]);
 
   const handleEdit = (id: number) => () => {
-    console.log("수정", id);
-    getCommentsAPI(id).then((res) => {
-      console.log(res);
-    });
+    const editFetch = async () => {
+      const res = await getCommentsAPI(id);
+
+      if (res && !Array.isArray(res)) {
+        setEditMode(true);
+        setEditCommentInfo(res);
+        setEditNumber(id);
+      }
+    };
+    editFetch();
   };
 
   const handleDelete = (id: number) => () => {

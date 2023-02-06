@@ -92,11 +92,11 @@
       "createdAt": "2022-03-17"
     },
     {
-      "id": 19,
-      "profile_url": "https://picsum.photos/id/19/50/50",
-      "author": "abc_19",
+      "profile_url": "https://picsum.photos/id/18/50/50",
+      "author": "이문세",
       "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-19"
+      "createdAt": "2022-03-23",
+      "id": 19
     },
     {
       "id": 20,
@@ -104,27 +104,6 @@
       "author": "abc_20",
       "content": "Form 처리는 어떻게 하면 깔끔할까요",
       "createdAt": "2022-03-20"
-    },
-    {
-      "id": 21,
-      "profile_url": "https://picsum.photos/id/21/50/50",
-      "author": "abc_21",
-      "content": "typescript도 배워 보려고 합니다. 어떻게 배우는게 빠를까요",
-      "createdAt": "2022-03-21"
-    },
-    {
-      "id": 22,
-      "profile_url": "https://picsum.photos/id/22/50/50",
-      "author": "abc_22",
-      "content": "주변에 React 개발자 있나요",
-      "createdAt": "2022-03-22"
-    },
-    {
-      "profile_url": "https://picsum.photos/id/6/50/50",
-      "author": "오경준",
-      "content": "하이요",
-      "createdAt": "2023-01-24",
-      "id": 23
     }
   ]
 }

@@ -1,12 +1,17 @@
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
-import { postCommentAPI } from "../../api";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { postCommentAPI, updateCommentAPI } from "../CommentList";
 import { CommentState } from "../../states/CommentState";
+import { EditState, EditModeState, EditNumber } from "../../states/EditState";
 import { IComment } from "../../types";
 import * as S from "./Form.styled";
 
 function Form() {
   const [commentList, setCommentList] = useRecoilState(CommentState);
+  const editCommentInfo = useRecoilValue(EditState);
+  const [editMode, setEditMode] = useRecoilState(EditModeState);
+  const [editNumber, setEditNumber] = useRecoilState(EditNumber);
 
   const { register, handleSubmit, reset } = useForm<IComment>();
 
@@ -21,9 +26,44 @@ function Form() {
     submitFetch();
   };
 
+  const handleReset = () => {
+    reset({
+      profile_url: "",
+      author: "",
+      content: "",
+      createdAt: "",
+    });
+    setEditMode(false);
+  };
+
+  const onEditSubmit: SubmitHandler<IComment> = (data) => {
+    const editFetch = async () => {
+      const res = await updateCommentAPI(editNumber!, data);
+      if (res) {
+        setCommentList(
+          commentList.map((comment: IComment) =>
+            comment.id === editNumber ? { ...comment, ...data } : comment,
+          ),
+        );
+        handleReset();
+      }
+    };
+    editFetch();
+  };
+
+  useEffect(() => {
+    if (editMode) {
+      reset(editCommentInfo);
+    }
+  }, [editMode, editCommentInfo, reset]);
+
   return (
     <S.FormStyle>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={
+          editMode ? handleSubmit(onEditSubmit) : handleSubmit(onSubmit)
+        }
+      >
         <input
           type="text"
           id="profile_url"
@@ -58,7 +98,16 @@ function Form() {
           {...register("createdAt")}
         />
         <br />
-        <button type="submit">등록</button>
+        {editMode ? (
+          <>
+            <button type="submit">수정</button>
+            <button type="button" onClick={handleReset}>
+              취소
+            </button>
+          </>
+        ) : (
+          <button type="submit">등록</button>
+        )}
       </form>
     </S.FormStyle>
   );
